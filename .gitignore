@@ -1,0 +1,10 @@
+# ignore the compiled executable:
+main 
+# ignore the object file created:
+*.o
+# ignore the compressed files: 
+*.nca
+# ignore my personal vs code settings: 
+*.vscode/
+# ignore all the temporary files created in future:
+*.tmp
