@@ -16,7 +16,7 @@ public:
     }
 
     // for internal node call:
-    HuffmanNode(int f, HuffmanNode* l, HuffmanNode* r) {
+    HuffmanNode(HuffmanNode* l, HuffmanNode* r) {
         ch = '\0';
         freq = l->freq + r->freq;
         left = l;

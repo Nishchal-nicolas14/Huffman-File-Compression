@@ -30,6 +30,9 @@ private:
     // make the priority queue for HuffmanNodes:
     HuffmanQueue createPriorityQueue(const unordered_map<char, int>& freq);
 
+    // make the Huffman Tree:
+    void createTree(HuffmanQueue& pq);
+
 public:
     HuffmanTree();
 
