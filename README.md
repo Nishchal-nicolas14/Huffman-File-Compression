@@ -18,9 +18,20 @@ Here your .huff file will contain the Huffman Tree, which will be used to decode
 
 ## About Files:
 
-#### 1. HuffmanNode.h : 
-This is the class file. It includes the class of HuffmanNode, which have the following components:-
+### 1. HuffmanNode.h : 
+This is the header file which includes the class of HuffmanNode, which have the following components:-
 1. Character value
 2. Frequency of the Character
 3. Right Node Address
 4. Left Node Address
+
+### 2. HuffmanTree.h :
+This is the header file which defines all the class members and its functions. 
+The Members include :-
+1. HuffmanNode* root :- It  stores the root address of HuffmanTree.
+2. string encodedText :- It stores the text after encoding the original text.
+
+The Functions are :-
+1. build() :- It is the function responsible for calling all the functions for creation of code using Huffman Tree.
+2. encoded() :- It is the function responsible for creating the encoded and compressed file, having extension (.nca).
+3. decode() :- It is the function responsible for getting the original text file using the encoded file (having extension .nca)
