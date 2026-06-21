@@ -64,12 +64,18 @@ void HuffmanTree::generateCodes() {
     return;
 }
 
+string HuffmanTree::encode(const string& text) {
+    string result = "";
+    for(char t:text) {
+        result += codes[t];
+    }
+    return result;
+}
+
 void HuffmanTree::build(const string& text) {
     // First, generate the frequency table:
     unordered_map<char, int> freq = generateFrequency(text);
-    for(auto& [key, value]:freq) {
-        cout << key << " : " << value << endl;
-    }
+    
     // Then, generate the Min-Heap for Huffman Tree:
     HuffmanQueue pq = createPriorityQueue(freq);
 

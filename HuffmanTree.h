@@ -43,5 +43,11 @@ private:
 public:
     HuffmanTree();
 
+    // from creating the huffman tree to creating the nodes:
     void build(const string& text);
+
+
+    // generate a string for the encoded part, using codes for each character:
+    string encode(const string& text);
+
 };
