@@ -23,6 +23,7 @@ using HuffmanQueue = priority_queue<HuffmanNode*, vector<HuffmanNode*>, comparat
 class HuffmanTree {
 private:
     HuffmanNode* root;
+    unordered_map<char, string> codes;
 
     // genrate frequency for each character:
     unordered_map<char, int> generateFrequency(const string& text);
@@ -32,6 +33,12 @@ private:
 
     // make the Huffman Tree:
     void createTree(HuffmanQueue& pq);
+
+    // generate a coded string for each character:
+    void generateCodes();
+
+    // Helper Function for generating code:
+    void generateCodeHelper(HuffmanNode* temp, string code); 
 
 public:
     HuffmanTree();

@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <queue>
 #include <vector>
+#include <stack>
 #include "HuffmanNode.h"
 #include "HuffmanTree.h"
 
@@ -43,9 +44,39 @@ void HuffmanTree::createTree(HuffmanQueue& pq) {
     this->root = pq.top();
 }
 
+void HuffmanTree::generateCodeHelper(HuffmanNode* temp, string code) {
+    if(temp == nullptr)
+        return;
+
+    if(temp->right==nullptr && temp->left==nullptr) {
+        codes[temp->ch] = code;
+        return;
+    }
+    
+    // calling the function for left node and right node:
+    generateCodeHelper(temp->left, code+"0");
+    generateCodeHelper(temp->right, code+"1");
+}
+
+void HuffmanTree::generateCodes() {
+    generateCodeHelper(root, "");
+    
+    return;
+}
+
 void HuffmanTree::build(const string& text) {
+    // First, generate the frequency table:
     unordered_map<char, int> freq = generateFrequency(text);
+    for(auto& [key, value]:freq) {
+        cout << key << " : " << value << endl;
+    }
+    // Then, generate the Min-Heap for Huffman Tree:
     HuffmanQueue pq = createPriorityQueue(freq);
 
+    // Generate the Huffman Tree:
+    createTree(pq);
+    
+    // Generate Codes for characters:
+    generateCodes();
     
 }
