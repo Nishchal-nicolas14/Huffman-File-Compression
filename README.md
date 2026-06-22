@@ -1,6 +1,24 @@
 # Huffman-File-Compression
 It is an C++ application, which creates a compressed version of your text file using Huffman Encoding Algorithm.
 
+## Features
+- Huffman Tree Construction
+- Text Encoding
+- Text Decoding
+- Lossless Compression Algorithm
+
+## Technologies
+- C++
+- STL
+- Priority Queue
+- Unordered Map
+- Binary Trees
+
+## Future Improvements
+- .nca file format
+- Bit-level compression
+- Command Line Interface
+
 ## About Its Workflow:
 
 The Huffman-File-Compression works on Huffman Encoding and Decoding Algorithm which creates a common pattern for a each unique characters, present in the text file.
