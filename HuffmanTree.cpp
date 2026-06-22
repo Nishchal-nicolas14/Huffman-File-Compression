@@ -72,6 +72,27 @@ string HuffmanTree::encode(const string& text) {
     return result;
 }
 
+string HuffmanTree::decode(const string& encodedText) {
+    // tranverse using HuffmanNode* root:-
+    string decodedText = "";
+    // pointer to traverse the HuffmanTree:-
+    HuffmanNode* temp = root;
+    for(auto text:encodedText) {
+        if(text == '0') {
+            temp = temp->left;
+        }
+        else {
+            temp = temp->right;
+        }
+        if(temp->left==nullptr && temp->right==nullptr) {
+            decodedText += temp->ch;
+            temp = root;
+        }
+    }
+
+    return decodedText;
+}
+
 void HuffmanTree::build(const string& text) {
     // First, generate the frequency table:
     unordered_map<char, int> freq = generateFrequency(text);

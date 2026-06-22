@@ -50,4 +50,6 @@ public:
     // generate a string for the encoded part, using codes for each character:
     string encode(const string& text);
 
+    // recover the original string from the compressed(.nca) file:
+    string decode(const string& encodedText);
 };
