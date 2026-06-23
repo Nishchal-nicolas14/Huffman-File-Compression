@@ -11,6 +11,91 @@
 
 using namespace std;
 
-int main() {
-    
+void showBanner() {
+    cout << "╔══════════════════════════════╗\n";
+    cout << "║      NCA COMPRESSOR v1.0     ║\n";
+    cout << "║   Huffman File Compression   ║\n";
+    cout << "║      Created by Nishchal     ║\n";
+    cout << "╚══════════════════════════════╝\n\n";
+}
+
+int main(int argc, char* argv[]) {
+    showBanner();
+    for(int i=0 ; i<argc ; i++)
+        cout << argv[i] << endl;
+    // check if number of arguments are less:
+    if(argc < 2) {
+        cerr << "Invalid Argument!\n";
+        cerr << "Usage : \n";
+        cerr << " nca compress <file.txt> or /file_path\n";
+        cerr << " nca decompress <file.nca> or /file_path\n";
+        cerr << " nca help\n";
+
+        return 1;
+    }
+    string command = argv[1];
+    // check for compression:-
+    if(command == "compress") {
+        if(argc != 3) {
+            cerr << "File Name Not Found!\n";
+        }
+        // open file and read it's content:-
+        FileManager fm;
+        string text;
+        try {
+            text = fm.readFile(string(argv[2]));
+        }
+        catch(const exception& e) {
+            cout << e.what() << "\n";
+            return 1;
+        }
+
+        // if the text we got correct then build the HuffmanTree for content:-
+        HuffmanTree ht;
+        ht.build(text);
+        string encoded = ht.encode(text);
+
+        // open the file for writing argument:-
+        try {
+            fm.writeFile(string(argv[2]), encoded);
+        }
+        catch(const exception& e) {
+            cerr << e.what() << "\n";
+            return 1;
+        }
+        cout << "\nFile Successfully Compressed\n";
+
+        return 1;
+    }
+    // check for decompression:-
+    if(command == "decompress") {
+        if(argc != 3) {
+            cerr << "File Name Not Found!\n";
+        }
+    }
+    // check for help:-
+    if(command == "help") {
+        if(argc > 2) {
+            cerr << "Invalid Argument!\n";
+            cerr << "Usage : \n";
+            cerr << " nca compress <file.txt> or /file_path\n";
+            cerr << " nca decompress <file.nca> or /file_path\n";
+            cerr << " nca help\n";
+
+            return 1;
+        }
+        cerr << "Usage : \n";
+        cerr << " nca compress <file.txt> or /file_path\tFor File Compression into .nca file\n";
+        cerr << " nca decompress <file.nca> or /file_path\tFor File Decompression into Original text file\n";
+        
+        return 1;
+    }
+    // or else the argument is not valid:-
+    else {
+        cerr << "Invalid Argument!\n";
+
+        return 1;
+    }
+
+
 }

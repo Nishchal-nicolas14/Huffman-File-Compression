@@ -47,7 +47,6 @@ string FileManager::readFile(const string& file_path) {
         throw runtime_error("Unsupported File Extension!");
     }
 
-    cout << content;
     return content;
 }
 
