@@ -7,6 +7,7 @@
 // other included files:
 #include "HuffmanNode.h"
 #include "HuffmanTree.h"
+#include "FileManager.h"
 
 using namespace std;
 
