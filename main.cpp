@@ -4,6 +4,7 @@
 #include <queue>
 #include <vector>
 #include <stack>
+#include <cstdint>
 // other included files:
 #include "HuffmanNode.h"
 #include "HuffmanTree.h"

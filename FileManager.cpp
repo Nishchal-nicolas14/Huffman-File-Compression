@@ -5,6 +5,7 @@
 #include <vector>
 #include <stack>
 #include <fstream>
+#include <cstdint>
 #include "HuffmanNode.h"
 #include "HuffmanTree.h"
 #include "FileManager.h"
