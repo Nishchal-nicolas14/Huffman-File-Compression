@@ -27,11 +27,27 @@ string FileManager::readFile(const string& file_path) {
         if(!file) {
             throw runtime_error("File Not Found!");
         }
+        // first read the frequency table using the helper function:
+        readFrequencyTable(file);
+        // then read the padding value using the helper function:
+        readPadding(file);
+
+        // the line below will assign the raw bits to the content:
         content.assign(
             (istreambuf_iterator<char>(file)), 
             istreambuf_iterator<char>()
         );
+
+        // need to store the actual bit unpacked strings:
+        string encoded = "";
+        for(auto value:content) {
+            for(int i=7 ; i>=0 ; i--) {
+                encoded += ((value >> i) & 1) ? '1' : '0';
+            }
+        }
         file.close();
+
+        return encoded;
     }
     else if(extension == ".txt") {
         ifstream file(file_path);
@@ -137,10 +153,9 @@ void FileManager::writePadding(ofstream& file, const string& data) {
 }
 
 // helping function for reading the header of the file:-
-unordered_map<char, int> FileManager::readFrequencyTable(ifstream& file) {
+void FileManager::readFrequencyTable(ifstream& file) {
     uint16_t size;
     file.read(reinterpret_cast<char*>(&size), sizeof(size));
-    unordered_map<char, int> freq;
     for(int i=0 ; i<size ; i++) {
         uint8_t ch;
         file.read(reinterpret_cast<char*>(&ch), sizeof(ch));
@@ -148,14 +163,20 @@ unordered_map<char, int> FileManager::readFrequencyTable(ifstream& file) {
         file.read(reinterpret_cast<char*>(&f), sizeof(f));
         freq[static_cast<char>(ch)] = static_cast<int>(f);
     }
-    
-    return freq;
 }
 
 // helping function for reading the padding from the encoded file:-
-int FileManager::readPadding(ifstream& file) {
-    uint8_t padding;
+void FileManager::readPadding(ifstream& file) {
+    
     file.read(reinterpret_cast<char*>(&padding), sizeof(padding));
     
+}
+
+// getter methods to access private members:
+unordered_map<char, int> FileManager::getFrequencyTable() {
+    return freq;
+}
+
+uint8_t FileManager::getPadding() {
     return padding;
 }
