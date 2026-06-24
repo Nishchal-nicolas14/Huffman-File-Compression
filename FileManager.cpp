@@ -135,3 +135,27 @@ void FileManager::writePadding(ofstream& file, const string& data) {
     uint8_t padding = (8 - (data.size() % 8)) % 8;
     file.write(reinterpret_cast<const char*>(&padding), sizeof(padding));
 }
+
+// helping function for reading the header of the file:-
+unordered_map<char, int> FileManager::readFrequencyTable(ifstream& file) {
+    uint16_t size;
+    file.read(reinterpret_cast<char*>(&size), sizeof(size));
+    unordered_map<char, int> freq;
+    for(int i=0 ; i<size ; i++) {
+        uint8_t ch;
+        file.read(reinterpret_cast<char*>(&ch), sizeof(ch));
+        uint32_t f;
+        file.read(reinterpret_cast<char*>(&f), sizeof(f));
+        freq[static_cast<char>(ch)] = static_cast<int>(f);
+    }
+    
+    return freq;
+}
+
+// helping function for reading the padding from the encoded file:-
+int FileManager::readPadding(ifstream& file) {
+    uint8_t padding;
+    file.read(reinterpret_cast<char*>(&padding), sizeof(padding));
+    
+    return padding;
+}
