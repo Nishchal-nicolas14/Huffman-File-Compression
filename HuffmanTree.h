@@ -26,9 +26,10 @@ class HuffmanTree {
 private:
     HuffmanNode* root;
     unordered_map<char, string> codes;
+    unordered_map<char, int> freq;
 
     // genrate frequency for each character:
-    unordered_map<char, int> generateFrequency(const string& text);
+    void generateFrequency(const string& text);
 
     // make the priority queue for HuffmanNodes:
     HuffmanQueue createPriorityQueue(const unordered_map<char, int>& freq);
@@ -44,6 +45,9 @@ private:
 
 public:
     HuffmanTree();
+
+    // getter method for getting the frequency table:-
+    const unordered_map<char, int>& getFrequencyTable();
 
     // from creating the huffman tree to creating the nodes:
     void build(const string& text);

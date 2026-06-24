@@ -4,6 +4,7 @@
 #include <queue>
 #include <vector>
 #include <stack>
+#include <cstdint>
 #include "HuffmanNode.h"
 #include "HuffmanTree.h"
 
@@ -13,14 +14,12 @@ HuffmanTree::HuffmanTree() {
     root = nullptr;
 }
 
-unordered_map<char, int> HuffmanTree::generateFrequency(const string& text) {
-    unordered_map<char, int> freq;
+void HuffmanTree::generateFrequency(const string& text) {
     
     for(auto ch:text) {
         freq[ch]++;
     }
 
-    return freq;
 }
 
 HuffmanQueue HuffmanTree::createPriorityQueue(const unordered_map<char, int>& freq) {
@@ -95,7 +94,7 @@ string HuffmanTree::decode(const string& encodedText) {
 
 void HuffmanTree::build(const string& text) {
     // First, generate the frequency table:
-    unordered_map<char, int> freq = generateFrequency(text);
+    generateFrequency(text);
     
     // Then, generate the Min-Heap for Huffman Tree:
     HuffmanQueue pq = createPriorityQueue(freq);
@@ -106,4 +105,9 @@ void HuffmanTree::build(const string& text) {
     // Generate Codes for characters:
     generateCodes();
     
+}
+
+// getter method for the frequency table:-
+const unordered_map<char, int>& HuffmanTree::getFrequencyTable() {
+    return freq;
 }
