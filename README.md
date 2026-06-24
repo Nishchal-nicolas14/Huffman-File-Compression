@@ -1,18 +1,58 @@
 # Huffman-File-Compression
 It is an C++ application, which creates a compressed version of your text file using Huffman Encoding Algorithm.
 
-## File Format
-[uint16_t unique_chars]
-[char][uint32_t freq]
-[char][uint32_t freq]
-...
-[encoded data]
-
 ## Features
-- Huffman Tree Construction
-- Text Encoding
-- Text Decoding
-- Lossless Compression Algorithm
+    Lossless text file compression
+    File decompression
+    Custom .nca file format
+    Binary file storage
+    Huffman Tree based encoding and decoding
+    Cross-platform C++ implementation
+
+## Project Structure
+    Huffman Tree Construction
+    Frequency Table Generation
+    Binary Encoding
+    Binary Decoding
+    File Manager
+    Command Line Interface (CLI)
+
+## Installation
+### Clone Repository
+git clone https://github.com/YOUR_USERNAME/Huffman-File-Compression.git
+cd Huffman-File-Compression
+
+### Build
+g++ *.cpp -o nca
+
+### Usage
+#### Compress a File
+./nca compress input.txt
+
+Output:
+input.nca
+
+#### Decompress a File
+./nca decompress input.nca
+
+Output:
+input_decoded.txt
+
+#### Help
+./nca help
+
+### Example
+./nca compress notes.txt
+./nca decompress notes.nca
+
+### File Format
+The .nca file stores:
+
+Frequency Table Header
+Padding Information
+Compressed Binary Data
+
+This allows the Huffman Tree to be reconstructed during decompression.
 
 ## Technologies
 - C++
@@ -20,11 +60,6 @@ It is an C++ application, which creates a compressed version of your text file u
 - Priority Queue
 - Unordered Map
 - Binary Trees
-
-## Future Improvements
-- .nca file format
-- Bit-level compression
-- Command Line Interface
 
 ## About Its Workflow:
 
@@ -57,16 +92,3 @@ The Functions are :-
 1. build() :- It is the function responsible for calling all the functions for creation of code using Huffman Tree.
 2. encoded() :- It is the function responsible for creating the encoded and compressed file, having extension (.nca).
 3. decode() :- It is the function responsible for getting the original text file using the encoded file (having extension .nca)
-
-## Compressed File:
-The Compressed File will have the extension .nca 
-The Components of Compressed File are:-
-
-### 1. MetaData:
-This is the header of the Compressed File, contains the information about the Characters of the compressed File, like the frequency of each Character. This information will be required at the time of recovering the original file.
-
-### 2. Padding:
-This is the extra bits added to the end to make the compressed data in multiple of 8. This makes the data easier to store and compress.
-
-### 3. Packed Binary Data:
-This is the main content of the file after Compression. These are packed binary data, looks like an garbage values. But it is how the compressed data looks like.

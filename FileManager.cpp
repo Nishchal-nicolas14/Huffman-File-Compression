@@ -70,7 +70,7 @@ string FileManager::readFile(const string& file_path) {
 void FileManager::writeFile(const string& file_path, const string& data, const unordered_map<char, int>& freq) {
     // getting the file name:-
     string file_name = "";
-    size_t pos1 = file_path.find_last_of('/');
+    size_t pos1 = file_path.find_last_of('/\\');
     size_t pos2 = file_path.find_last_of('.');
     if(pos1 == string::npos) {
         file_name.assign(file_path.substr(0, pos2));
