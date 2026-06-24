@@ -49,6 +49,9 @@ public:
     // getter method for getting the frequency table:-
     const unordered_map<char, int>& getFrequencyTable();
 
+    // setter method for frequency table:-
+    void setFrequencyTable(const unordered_map<char, int>& freq);
+
     // from creating the huffman tree to creating the nodes:
     void build(const string& text);
 
@@ -57,5 +60,5 @@ public:
     string encode(const string& text);
 
     // recover the original string from the compressed(.nca) file:
-    string decode(const string& encodedText);
+    string decode(string& encodedText, int padding);
 };

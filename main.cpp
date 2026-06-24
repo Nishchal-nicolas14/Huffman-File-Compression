@@ -72,6 +72,35 @@ int main(int argc, char* argv[]) {
         if(argc != 3) {
             cerr << "File Name Not Found!\n";
         }
+        // open file and read it's content:-
+        FileManager fm;
+        string text;
+        try {
+            text = fm.readFile(string(argv[2]));
+        }
+        catch(const exception& e) {
+            cout << e.what() << "\n";
+            return 1;
+        }
+        unordered_map<char, int> freq = fm.getFrequencyTable();
+        uint8_t padding = fm.getPadding();
+        
+        // if the text is successfully readed then, build a Huffman Tree:
+        HuffmanTree ht;
+        ht.setFrequencyTable(freq);
+        string decoded = ht.decode(text, (int)padding);
+
+        // open the file for writing argument:-
+        try {
+            fm.writeFile(string(argv[2]), decoded, freq);
+        }
+        catch(const exception& e) {
+            cerr << e.what() << "\n";
+            return 1;
+        }
+        cout << "\nFile Successfully Decompressed\n";
+
+        return 1;
     }
     // check for help:-
     if(command == "help") {

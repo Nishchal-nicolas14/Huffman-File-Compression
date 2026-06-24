@@ -71,7 +71,14 @@ string HuffmanTree::encode(const string& text) {
     return result;
 }
 
-string HuffmanTree::decode(const string& encodedText) {
+string HuffmanTree::decode(string& encodedText, int padding) {
+    // first you will create the HuffmanTree, using the priority queue:
+    HuffmanQueue pq = createPriorityQueue(freq);
+    createTree(pq);
+    // remove the last padding characters:-
+    while(padding--) {
+        encodedText.pop_back();
+    }
     // tranverse using HuffmanNode* root:-
     string decodedText = "";
     // pointer to traverse the HuffmanTree:-
@@ -110,4 +117,9 @@ void HuffmanTree::build(const string& text) {
 // getter method for the frequency table:-
 const unordered_map<char, int>& HuffmanTree::getFrequencyTable() {
     return freq;
+}
+
+// setter method for the frequency table:-
+void HuffmanTree::setFrequencyTable(const unordered_map<char, int>& freq) {
+    this->freq = freq;
 }
