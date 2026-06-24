@@ -22,8 +22,6 @@ void showBanner() {
 
 int main(int argc, char* argv[]) {
     showBanner();
-    for(int i=0 ; i<argc ; i++)
-        cout << argv[i] << endl;
     // check if number of arguments are less:
     if(argc < 2) {
         cerr << "Invalid Argument!\n";
@@ -55,10 +53,11 @@ int main(int argc, char* argv[]) {
         HuffmanTree ht;
         ht.build(text);
         string encoded = ht.encode(text);
+        unordered_map<char, int> freq = ht.getFrequencyTable();
 
         // open the file for writing argument:-
         try {
-            fm.writeFile(string(argv[2]), encoded);
+            fm.writeFile(string(argv[2]), encoded, freq);
         }
         catch(const exception& e) {
             cerr << e.what() << "\n";
@@ -86,7 +85,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
         cerr << "Usage : \n";
-        cerr << " nca compress <file.txt> or /file_path\tFor File Compression into .nca file\n";
+        cerr << " nca compress <file.txt> or /file_path\t\tFor File Compression into .nca file\n";
         cerr << " nca decompress <file.nca> or /file_path\tFor File Decompression into Original text file\n";
         
         return 1;

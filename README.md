@@ -1,6 +1,13 @@
 # Huffman-File-Compression
 It is an C++ application, which creates a compressed version of your text file using Huffman Encoding Algorithm.
 
+## File Format
+[uint16_t unique_chars]
+[char][uint32_t freq]
+[char][uint32_t freq]
+...
+[encoded data]
+
 ## Features
 - Huffman Tree Construction
 - Text Encoding
@@ -58,5 +65,8 @@ The Components of Compressed File are:-
 ### 1. MetaData:
 This is the header of the Compressed File, contains the information about the Characters of the compressed File, like the frequency of each Character. This information will be required at the time of recovering the original file.
 
-### 2. Packed Binary Data:
+### 2. Padding:
+This is the extra bits added to the end to make the compressed data in multiple of 8. This makes the data easier to store and compress.
+
+### 3. Packed Binary Data:
 This is the main content of the file after Compression. These are packed binary data, looks like an garbage values. But it is how the compressed data looks like.
