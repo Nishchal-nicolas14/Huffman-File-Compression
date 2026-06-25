@@ -18,12 +18,22 @@ It is an C++ application, which creates a compressed version of your text file u
     Command Line Interface (CLI)
 
 ## Installation
+
+### Requirements as a System
+    You should have a Windows or Linux System.
+    You should have a GCC Compiler for C++
+
 ### Clone Repository
-git clone https://github.com/YOUR_USERNAME/Huffman-File-Compression.git
+git clone https://github.com/Nishchal-nicolas14/Huffman-File-Compression.git
+
 cd Huffman-File-Compression
 
 ### Build
-g++ *.cpp -o nca
+#### for Windows
+    g++ -o nca *.cpp
+
+#### for Linux
+    g++ *.cpp -o nca
 
 ### Usage
 #### Compress a File
@@ -43,6 +53,7 @@ input_decoded.txt
 
 ### Example
 ./nca compress notes.txt
+
 ./nca decompress notes.nca
 
 ### File Format
