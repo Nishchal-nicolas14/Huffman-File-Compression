@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <map>
 #include <queue>
 #include <vector>
 #include <stack>
@@ -22,7 +23,7 @@ void HuffmanTree::generateFrequency(const string& text) {
 
 }
 
-HuffmanQueue HuffmanTree::createPriorityQueue(const unordered_map<char, int>& freq) {
+HuffmanQueue HuffmanTree::createPriorityQueue(const map<char, int>& freq) {
     HuffmanQueue pq;
     for(auto& [key, value]:freq) {
         HuffmanNode* newNode = new HuffmanNode(key, value);
@@ -115,11 +116,11 @@ void HuffmanTree::build(const string& text) {
 }
 
 // getter method for the frequency table:-
-const unordered_map<char, int>& HuffmanTree::getFrequencyTable() {
+const map<char, int>& HuffmanTree::getFrequencyTable() {
     return freq;
 }
 
 // setter method for the frequency table:-
-void HuffmanTree::setFrequencyTable(const unordered_map<char, int>& freq) {
+void HuffmanTree::setFrequencyTable(const map<char, int>& freq) {
     this->freq = freq;
 }

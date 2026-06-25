@@ -3,7 +3,7 @@
 class FileManager {
 private:
     // private members:-
-    unordered_map<char, int> freq;
+    map<char, int> freq;
     uint8_t padding;
 
     // function to read the header of the file:
@@ -13,14 +13,14 @@ private:
     void readPadding(ifstream& file);
 
     // function to write the header frequency table:
-    void writeFrequencyTable(ofstream& file, const unordered_map<char, int>& freq);
+    void writeFrequencyTable(ofstream& file, const map<char, int>& freq);
 
     // function to write the padding of the data file:
     void writePadding(ofstream& file, const string& data);
 
 public:
     // getter function for private members:
-    unordered_map<char, int> getFrequencyTable();
+    map<char, int> getFrequencyTable();
     
     uint8_t getPadding();
 
@@ -28,6 +28,6 @@ public:
     string readFile(const string& file_path);
 
     // function to write the content into the file:
-    void writeFile(const string& file_path, const string& data, const unordered_map<char, int>& freq);
+    void writeFile(const string& file_path, const string& data, const map<char, int>& freq);
 
 };

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <map>
 #include <queue>
 #include <vector>
 #include "HuffmanNode.h"
@@ -26,13 +27,13 @@ class HuffmanTree {
 private:
     HuffmanNode* root;
     unordered_map<char, string> codes;
-    unordered_map<char, int> freq;
+    map<char, int> freq;
 
     // genrate frequency for each character:
     void generateFrequency(const string& text);
 
     // make the priority queue for HuffmanNodes:
-    HuffmanQueue createPriorityQueue(const unordered_map<char, int>& freq);
+    HuffmanQueue createPriorityQueue(const map<char, int>& freq);
 
     // make the Huffman Tree:
     void createTree(HuffmanQueue& pq);
@@ -47,10 +48,10 @@ public:
     HuffmanTree();
 
     // getter method for getting the frequency table:-
-    const unordered_map<char, int>& getFrequencyTable();
+    const map<char, int>& getFrequencyTable();
 
     // setter method for frequency table:-
-    void setFrequencyTable(const unordered_map<char, int>& freq);
+    void setFrequencyTable(const map<char, int>& freq);
 
     // from creating the huffman tree to creating the nodes:
     void build(const string& text);

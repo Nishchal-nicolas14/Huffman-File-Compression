@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
         HuffmanTree ht;
         ht.build(text);
         string encoded = ht.encode(text);
-        unordered_map<char, int> freq = ht.getFrequencyTable();
+        map<char, int> freq = ht.getFrequencyTable();
 
         // open the file for writing argument:-
         try {
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]) {
             cout << e.what() << "\n";
             return 1;
         }
-        unordered_map<char, int> freq = fm.getFrequencyTable();
+        map<char, int> freq = fm.getFrequencyTable();
         uint8_t padding = fm.getPadding();
         
         // if the text is successfully readed then, build a Huffman Tree:
