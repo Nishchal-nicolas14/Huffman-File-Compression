@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <map>
 #include <queue>
 #include <vector>
 #include <stack>
@@ -67,10 +68,10 @@ string FileManager::readFile(const string& file_path) {
     return content;
 }
 
-void FileManager::writeFile(const string& file_path, const string& data, const unordered_map<char, int>& freq) {
+void FileManager::writeFile(const string& file_path, const string& data, const map<char, int>& freq) {
     // getting the file name:-
     string file_name = "";
-    size_t pos1 = file_path.find_last_of('/\\');
+    size_t pos1 = file_path.find_last_of("/\\");
     size_t pos2 = file_path.find_last_of('.');
     if(pos1 == string::npos) {
         file_name.assign(file_path.substr(0, pos2));
@@ -128,7 +129,7 @@ void FileManager::writeFile(const string& file_path, const string& data, const u
 }
 
 // helping function - 1 to write the header of the file:
-void FileManager::writeFrequencyTable(ofstream& file, const unordered_map<char, int>& freq) {
+void FileManager::writeFrequencyTable(ofstream& file, const map<char, int>& freq) {
     /*
         static_cast<type>(expression)
         this static_cast is used to explicitly convert expression into given type
@@ -173,7 +174,7 @@ void FileManager::readPadding(ifstream& file) {
 }
 
 // getter methods to access private members:
-unordered_map<char, int> FileManager::getFrequencyTable() {
+map<char, int> FileManager::getFrequencyTable() {
     return freq;
 }
 
