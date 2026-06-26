@@ -8,3 +8,5 @@ main
 *.vscode/
 # ignore all the temporary files created in future:
 *.tmp
+# ignore the compiled binary files:
+build/
