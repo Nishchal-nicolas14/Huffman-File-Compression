@@ -37,6 +37,7 @@ int main(int argc, char* argv[]) {
     if(command == "compress") {
         if(argc != 3) {
             cerr << "File Name Not Found!\n";
+            return 1;
         }
         // open file and read it's content:-
         FileManager fm;
@@ -71,6 +72,7 @@ int main(int argc, char* argv[]) {
     if(command == "decompress") {
         if(argc != 3) {
             cerr << "File Name Not Found!\n";
+            return 1;
         }
         // open file and read it's content:-
         FileManager fm;
