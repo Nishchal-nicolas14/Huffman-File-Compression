@@ -19,21 +19,40 @@ It is an C++ application, which creates a compressed version of your text file u
 
 ## Installation
 
-### Requirements as a System
-    You should have a Windows or Linux System.
-    You should have a GCC Compiler for C++
+Download the binary for your platform from [Releases](https://github.com/Nishchal-nicolas14/Huffman-File-Encoding/releases).
 
-### Clone Repository
-git clone https://github.com/Nishchal-nicolas14/Huffman-File-Compression.git
+### Linux
+Use these commands on bash:
+```
+chmod +x nca-Linux
+sudo mv nca-Linux /usr/local/bin/nca
+```
 
-cd Huffman-File-Compression
+### macOS
+Use these commands on bash:
+```
+chmod +x nca-macOS
+sudo mv nca-macOS /usr/local/bin/nca
+```
 
-### Build
-#### for Windows
-    g++ -o nca *.cpp
+### Windows
+Rename `nca-Windows.exe` to `nca.exe`, move it to a folder like `C:\tools\`, then add that folder to your system PATH.
 
-#### for Linux
-    g++ *.cpp -o nca
+#### Follow these Steps to add nca to system Path:
+#### Follow these steps to add nca to system PATH:
+1. Search for **Environment Variables** in the Windows search bar.
+2. Click **"Edit the system environment variables"**.
+3. In the dialog that opens, click the **"Environment Variables"** button at the bottom.
+4. Under **"System variables"** (or "User variables" for current user only), select **Path** and click **Edit**.
+5. Click **New** and paste the full path to the folder containing `nca.exe` (e.g. `C:\tools\nca\`).
+6. Click **OK** on all dialogs to save.
+7. Open a new terminal and type `nca` to verify it works. 
+
+## Usage
+Use these commands on bash:
+nca compress filename      # compress
+nca decompress filename      # decompress
+
 
 ### Usage
 #### Compress a File
