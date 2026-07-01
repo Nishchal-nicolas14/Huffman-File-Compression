@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
     }
     string command = argv[1];
     // check for compression:-
-    if(command == "compress") {
+    if(command == "--compress") {
         if(argc != 3) {
             cerr << "File Name Not Found!\n";
             return 1;
@@ -69,7 +69,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     // check for decompression:-
-    if(command == "decompress") {
+    if(command == "--decompress") {
         if(argc != 3) {
             cerr << "File Name Not Found!\n";
             return 1;
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     // check for help:-
-    if(command == "help") {
+    if(command == "--help") {
         if(argc > 2) {
             cerr << "Invalid Argument!\n";
             cerr << "Usage : \n";
