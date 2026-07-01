@@ -50,30 +50,30 @@ Rename `nca-Windows.exe` to `nca.exe`, move it to a folder like `C:\tools\`, the
 
 ## Usage
 Use these commands on bash:
-nca compress filename      # compress
-nca decompress filename      # decompress
+nca --compress filename      # compress
+nca --decompress filename      # decompress
 
 
 ### Usage
 #### Compress a File
-./nca compress input.txt
+./nca --compress input.txt
 
 Output:
 input.nca
 
 #### Decompress a File
-./nca decompress input.nca
+./nca --decompress input.nca
 
 Output:
 input_decoded.txt
 
 #### Help
-./nca help
+./nca --help
 
 ### Example
-./nca compress notes.txt
+./nca --compress notes.txt
 
-./nca decompress notes.nca
+./nca --decompress notes.nca
 
 ### File Format
 The .nca file stores:
